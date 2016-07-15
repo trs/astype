@@ -13,4 +13,5 @@ describe('number', function () {
   it('converts "123a" to 123', () => expect(asType.number('123a')).to.equal(123));
   it('converts Infinity to 0', () => expect(asType.number(Infinity, {allowInfinity: false})).to.equal(0));
   it('converts Infinity to Infinity', () => expect(asType.number(Infinity)).to.equal(Infinity));
+  it('converts "1" to 1', () => expect(asType.number('1')).to.equal(1));
 });

@@ -1,6 +1,6 @@
 {
   "name": "astype",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Convert unknown type to certain type",
   "homepage": "",
   "author": {
@@ -20,6 +20,7 @@
     "parse"
   ],
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^2.1.0",
     "eslint-config-xo-space": "^0.13.0",
     "babel-eslint": "^4.1.8",
@@ -37,19 +38,10 @@
     "babel-core": "^5.5.0",
     "isparta": "^3.0.3"
   },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
-  },
   "repository": "stewarttylerr/astype",
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
-  "license": "MIT",
-  "dependencies": {
-    "chai": "^3.5.0"
-  }
+  "license": "MIT"
 }

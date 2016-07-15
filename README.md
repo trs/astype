@@ -1,5 +1,5 @@
-# astype [![NPM version][npm-image]][npm-url]
-> Convert an unknown type to a number (integer, float), string, or boolean
+# as [![NPM version][npm-image]][npm-url]
+> Convert an unknown type to a string, boolean, or number (integer, or float)
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -31,7 +31,8 @@ as.string(true); // "true"
 
 ### Global
 
-This will set the behavior anytime a conversion is used.
+This will set the behavior anytime a conversion is used.  
+This allows simplier syntax when using the same rules.
 
 ```js
 as.setGlobal({
@@ -41,10 +42,21 @@ as.setGlobal({
 });
 ```
 
+You can also unset global options as well.  
+Passing an empty object or null will unset all options under that key.
+
+```js
+as.unsetGlobal({
+  number: { ... },
+  boolean: { ... },
+  string: { ... }
+})
+```
+
 ### Per Query
 
-You can also pass through options in the conversion, these will override
-any global options.
+You can also pass through options in the conversion, **these will override
+any global options**.
 
 ```js
 as.number(..., { ... })

@@ -15,4 +15,6 @@ describe('number', function () {
   it('converts Infinity to Infinity', () => expect(as.number(Infinity)).to.equal(Infinity));
   it('converts "1" to 1', () => expect(as.number('1')).to.equal(1));
   it('converts "1.1" to 1.1', () => expect(as.number('1.1')).to.equal(1.1));
+  it('converts "" to null', () => expect(as.number('')).to.equal(null));
+  it('converts "" to 0', () => expect(as.number('', {allowNull: false})).to.equal(0));
 });

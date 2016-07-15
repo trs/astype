@@ -1,4 +1,4 @@
-# as [![NPM version][npm-image]][npm-url]
+# astype [![NPM version][npm-image]][npm-url]
 > Convert an unknown type to a string, boolean, or number (integer, or float)
 
 * [Installation](#installation)

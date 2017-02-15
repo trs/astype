@@ -17,13 +17,17 @@ $ npm install --save astype
 import as from 'astype';
 
 as.number('1'); // 1
+as.integer('55.1'); // 55
 as.boolean(0); // false
 as.string(true); // "true"
 ```
 
 ### Available conversions
 
-* `number(...)` (aliases: `double()`, `float()`, `integer()`)
+* `number(...)` (aliases: `double()`, `float()`)
+  * allows decimal places (1.1)
+* `integer(...)`
+  * truncates decimal places (1.1 => 1)
 * `boolean(...)` (aliases: `bool()`)
 * `string(...)`
 
@@ -90,6 +94,12 @@ as.number(..., { ... })
   (eg: 'abc123!' => 123)
   * If `false`: conversion will return `NaN` if **allowNaN** is `true`,
   otherwise `0`
+
+* **allowDecimals** (default: `true`)
+  * If `true`: will allow decimal places in numbers
+  (eg: '1.9' => 1.9)
+  * If `false`: will truncate decimal places
+  (eg: '1.9' => 1)
 
 #### `boolean`
 * **allowNull** (default: `true`)

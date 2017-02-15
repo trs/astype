@@ -1,5 +1,5 @@
-import {expect} from 'chai';
-import as from '../lib';
+const expect = require('chai').expect;
+const as = require('../lib');
 
 describe('string', function () {
   it('converts null to null', () => expect(as.string(null)).to.equal(null));

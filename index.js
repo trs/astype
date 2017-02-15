@@ -1,2 +1,3 @@
 import astype from './lib';
-export default astype;
+const astype = require('./lib');
+module.exports = astype;

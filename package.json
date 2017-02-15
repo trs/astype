@@ -2,49 +2,87 @@
   "name": "astype",
   "version": "0.1.3",
   "description": "Convert unknown type to certain type",
-  "homepage": "",
-  "author": {
-    "name": "Tyler Stewart",
-    "email": "tylers490@gmail.com",
-    "url": ""
-  },
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
   "keywords": [
-    "type",
-    "convert",
-    "converter",
     "as",
     "as-type",
     "astype",
+    "convert",
+    "converter",
     "parse",
-    "parser"
+    "parser",
+    "type"
   ],
+  "homepage": "",
+  "license": "MIT",
+  "author": {
+    "name": "Tyler Stewart",
+    "email": "tylers490@gmail.com"
+  },
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stewarttylerr/astype"
+  },
+  "scripts": {
+    "pre-release": "npm-run-all verify test:coverage build ",
+    "build": "cross-env NODE_ENV=production npm run clean:prod",
+    "clean:prod": "rimraf dist/",
+    "commitmsg": "cz-customizable-ghooks",
+    "dev": "cross-env NODE_ENV=development npm run verify:watch",
+    "prepush": "npm-run-all verify test:coverage --silent",
+    "start": "npm run dev",
+    "test": "npm run test:unit",
+    "test:check-coverage": "cross-env NODE_ENV=test istanbul check-coverage reports/coverage/coverage.json --config config/testUnit/istanbul.js",
+    "test:coverage": "npm-run-all test:unit:once test:check-coverage --silent",
+    "test:unit": "chokidar 'lib/**/*.js' 'test/**/*.js' -c 'npm run test:unit:once' --initial --silent",
+    "test:unit:once": "cross-env NODE_ENV=test istanbul cover --config config/testUnit/istanbul.js _mocha -- --opts config/testUnit/mocha.opts",
+    "upload-coverage": "cat reports/coverage/lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "verify": "npm run verify:js --silent",
+    "verify:js": "eslint -c config/verify/.eslintrc \"lib/**/*.js\" \"test/**/*.js\" \"config/**/*.js\" && echo ✅ verify:js success",
+    "verify:js:fix": "eslint --fix -c config/verify/.eslintrc \"lib/**/*.js\" \"test/**/*.js\" \"config/**/*.js\" && echo ✅ verify:js:fix success",
+    "verify:js:watch": "chokidar 'lib/**/*.js' 'test/**/*.js' 'config/**/*.js' -c 'npm run verify:js:fix' --initial --silent",
+    "verify:watch": "npm run verify:js:watch --silent",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "config/release/commitMessageConfig.js"
+    }
+  },
+  "release": {
+    "verifyConditions": "condition-travis"
+  },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^2.1.0",
-    "eslint-config-xo-space": "^0.13.0",
+    "babel-core": "^5.5.0",
     "babel-eslint": "^4.1.8",
+    "chai": "^3.5.0",
+    "chokidar-cli": "1.2.0",
+    "coveralls": "2.11.15",
+    "cross-env": "3.1.4",
+    "cz-customizable": "4.0.0",
+    "cz-customizable-ghooks": "1.5.0",
+    "del": "^2.0.2",
+    "eslint": "3.14.1",
+    "eslint-config-xo-space": "^0.13.0",
     "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-node": "3.0.5",
     "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
     "gulp-eslint": "^2.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-line-ending-corrector": "^1.0.1",
     "gulp-istanbul": "^0.10.3",
+    "gulp-line-ending-corrector": "^1.0.1",
     "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^1.0.0",
     "gulp-nsp": "^2.1.0",
-    "gulp-babel": "^5.1.0",
-    "del": "^2.0.2",
-    "babel-core": "^5.5.0",
-    "isparta": "^3.0.3"
-  },
-  "repository": "stewarttylerr/astype",
-  "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
-  },
-  "license": "MIT"
+    "gulp-plumber": "^1.0.0",
+    "husky": "0.13.1",
+    "isparta": "^3.0.3",
+    "istanbul": "0.4.5",
+    "mocha": "3.2.0",
+    "npm-run-all": "4.0.1",
+    "rimraf": "2.5.4"
+  }
 }

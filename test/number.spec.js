@@ -19,4 +19,6 @@ describe('number', function () {
   it('converts "" to null', () => expect(as.number('')).to.equal(null));
   it('converts "" to 0', () => expect(as.number('', {allowNull: false})).to.equal(0));
   it('converts 1 to 1', () => expect(as.number(1)).to.equal(1));
+  it('converts 1.1 to 1', () => expect(as.integer(1.1)).to.equal(1));
+  it('converts "1.1" to 1', () => expect(as.integer('1.1')).to.equal(1));
 });

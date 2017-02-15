@@ -41,7 +41,8 @@
     "verify:js": "eslint -c config/verify/.eslintrc \"lib/**/*.js\" \"test/**/*.js\" \"config/**/*.js\" && echo ✅ verify:js success",
     "verify:js:fix": "eslint --fix -c config/verify/.eslintrc \"lib/**/*.js\" \"test/**/*.js\" \"config/**/*.js\" && echo ✅ verify:js:fix success",
     "verify:js:watch": "chokidar 'lib/**/*.js' 'test/**/*.js' 'config/**/*.js' -c 'npm run verify:js:fix' --initial --silent",
-    "verify:watch": "npm run verify:js:watch --silent"
+    "verify:watch": "npm run verify:js:watch --silent",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "config": {
     "commitizen": {
@@ -50,6 +51,9 @@
     "cz-customizable": {
       "config": "config/release/commitMessageConfig.js"
     }
+  },
+  "release": {
+    "verifyConditions": "condition-travis"
   },
   "devDependencies": {
     "babel-core": "^5.5.0",

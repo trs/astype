@@ -1,2 +1,11 @@
+language: node_js
+node_js:
+  - "6"
+  - "node"
+
+install:
+  - npm install
+
 script:
+  - npm test
   - if [ $TRAVIS_BRANCH = 'master' ]; then npm run semantic-release || true; fi

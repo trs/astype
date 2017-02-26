@@ -33,9 +33,15 @@ as.string(true); // "true"
 
 ## Options
 
+Options can be used to modify the behavior of the conversions.  
+These can be set in two ways:
+
+* [Global](#global) will affect the behavior anytime that function is used
+* [Query](#query) will affect the behavior in that instance
+
 ### Global
 
-This will set the behavior anytime a conversion is used.  
+Setting a global option will modify the behavior anytime a function is called.  
 This allows simplier syntax when using the same rules.
 
 ```js
@@ -57,13 +63,18 @@ as.unsetGlobal({
 })
 ```
 
-### Per Query
+### Query
 
-You can also pass through options in the conversion, **these will override
-any global options**.
+You can also pass through options in the conversion.  
+This will change the behavior in this instance, but will not change any globally set options.  
+**these take presidence over any global options**.
 
 ```js
 as.number(..., { ... })
+```
+
+```js
+as.number(null, { allowNull: false }); // 0
 ```
 
 ### Available Options

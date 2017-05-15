@@ -21,7 +21,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stewarttylerr/astype"
+    "url": "https://github.com/trs/astype"
   },
   "scripts": {
     "pre-release": "npm-run-all verify test:coverage build ",
